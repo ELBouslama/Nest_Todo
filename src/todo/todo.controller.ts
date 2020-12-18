@@ -7,11 +7,14 @@ import {
   Patch,
   Post,
   Put,
+  UseInterceptors,
 } from '@nestjs/common';
+import { DurationInterceptor } from 'src/interceptors/duration.interceptor';
 import { FirstpipePipe } from 'src/pipes/firstpipe.pipe';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update_todo.dto';
 import { TodoService } from './todo.service';
+
 
 @Controller('todo')
 export class TodoController {

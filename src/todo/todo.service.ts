@@ -2,11 +2,17 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Todo } from './models/todo.model';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update_todo.dto';
+import { TodoEntity } from './entities/todo.entity';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class TodoService {
   private todos: Todo[] = [];
-  constructor() {
+  constructor(
+    @InjectRepository(TodoEntity)
+    private readonly TodoRepository: Repository<TodoEntity>,
+  ) {
     const todo = new Todo();
     todo.name = 'Sport';
     todo.description = 'Faire du Sport';
@@ -29,7 +35,6 @@ export class TodoService {
   }
 
   createTodo(newTodo: CreateTodoDto): Todo {
-    
     const { name, description } = newTodo;
     const todo = new Todo();
     todo.name = name;
