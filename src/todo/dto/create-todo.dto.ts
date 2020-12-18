@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsOptional, IsString, MaxLength, MinLength } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 
 export class CreateTodoDto {
   //check class-validator pour trouver tous les annotations
@@ -13,7 +19,7 @@ export class CreateTodoDto {
     message:
       "$property est invalide la taille doit etre d'au plus $constraint1 caracteres",
   })
-  @IsString() 
+  @IsString()
   name: string;
 
   @IsString()

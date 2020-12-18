@@ -12,7 +12,7 @@ import { TodoStatusEnum } from '../enums/todos-status.enum';
 @Entity('todo')
 export class TodoEntity extends Timestamp{
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column({ length: 30 })
   name: string;
